@@ -1,6 +1,7 @@
 package TicTacToe.Enum;
 
-public enum Mark {
+public enum Mark
+{
     X,
     O,
     BLANK

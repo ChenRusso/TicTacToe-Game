@@ -9,15 +9,11 @@ import javax.swing.*;
 
 public class Game {
 
-    private Renderer consoleRenderer;
+    private final Renderer consoleRenderer;
 
-    private Player humanPlayerX;
+    private final Player humanPlayerX;
 
-    private Player humanPlayerO;
-
-    private int indexRow;
-
-    private int indexCol;
+    private final Player humanPlayerO;
 
     public Game(Player humanPlayerX, Player humanPlayerO, Renderer consoleRenderer)
     {
@@ -26,7 +22,8 @@ public class Game {
         this.consoleRenderer = consoleRenderer;
     }
 
-    public Winner run(){
+    public Winner run()
+    {
         Winner gameStatus = Winner.IN_PROGRESS;
 
         Board board = new Board();
@@ -35,13 +32,17 @@ public class Game {
 
         while (Winner.IN_PROGRESS == gameStatus) {
             consoleRenderer.renderBoard(board);
-            if (isXPlay == true) {
+            int indexCol;
+            int indexRow;
+            if (isXPlay)
+            {
                 humanPlayerX.playTurn(board);
                 indexRow = humanPlayerX.getIndexRow();
                 indexCol = humanPlayerX.getIndexCol();
                 gameStatus = board.isHaveWinner(indexRow, indexCol, Mark.X);
             }
-            else{
+            else
+            {
                 humanPlayerO.playTurn(board);
                 indexRow = humanPlayerO.getIndexRow();
                 indexCol = humanPlayerO.getIndexCol();

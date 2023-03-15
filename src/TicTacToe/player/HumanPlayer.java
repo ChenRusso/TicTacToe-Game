@@ -8,45 +8,43 @@ import  java.util.Scanner;
 
 public class HumanPlayer implements Player {
 
-    private Mark mark;
+    private final Mark mark;
 
     private int indexCol;
 
     private int indexRow;
 
-    public HumanPlayer(Mark mark) {
+    public HumanPlayer(Mark mark)
+    {
         this.mark = mark;
     }
 
-    public void playTurn(Board board) {
+    public void playTurn(Board board)
+    {
         Scanner scanner = new Scanner(System.in);
-        int rowNumer, colNumber;
+        int rowNumber, colNumber;
         System.out.print("Enter row and column coordinates "+ '\n');
-        rowNumer = scanner.nextInt();
+
+        rowNumber = scanner.nextInt();
         colNumber = scanner.nextInt();
-        indexRow=rowNumer;
+        indexRow=rowNumber;
         indexCol=colNumber;
 
-            while ( !board.putMark(rowNumer,colNumber,mark)){
+            while ( !board.putMark(rowNumber,colNumber,mark))
+            {
                 System.out.print("Incorrect coordinates ,must be re-entered"+ '\n');
-                rowNumer = scanner.nextInt();
+                rowNumber = scanner.nextInt();
                 colNumber = scanner.nextInt();
             }
     }
 
-    public int getIndexRow() {
+    public int getIndexRow()
+    {
         return indexRow;
     }
 
-    public int getIndexCol() {
+    public int getIndexCol()
+    {
         return indexCol;
-    }
-
-    private void setIndexRow(int indexRow) {
-        this.indexRow = indexRow;
-    }
-
-    private void setIndexCol(int indexCol) {
-        this.indexCol = indexCol;
     }
 }
